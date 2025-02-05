@@ -1,0 +1,77 @@
+#!/bin/zsh
+
+PS1="%F{118}[%f%F{106}%1~%f%F{118}]%f%F{118} > %f%F{106}%f"
+unsetopt PROMPT_SP
+
+HISTFILE=$ZDOTDIR/z_history
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt appendhistory
+setopt hist_ignore_all_dups
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
+setopt autocd # Automatically cd into typed directory.
+
+# Basic auto/tab complete:
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)		# Include hidden files.
+
+autoload -U colors && colors    # Load colors
+
+stty stop undef		# Disable ctrl-s to freeze terminal.
+
+# keybinds:
+bindkey "^M" accept-line #enter
+
+bindkey "^I" expand-or-complete # tab
+
+
+function clear-scrollback-buffer {
+  clear && printf '\e[3J'
+  zle && zle .reset-prompt && zle -R
+}
+
+zle -N clear-scrollback-buffer
+bindkey '^L' clear-scrollback-buffer
+# bindkey "^L" clear-screen #ctrl L
+
+bindkey -s '^Y' 'echo -n !! | xsel --clipboard\n' #copy last output to clipboard
+bindkey -s '^Y' 'echo -n !! | clipboard_copy\n'
+
+bindkey "^?" backward-delete-char # backspace
+bindkey "^H" backward-kill-word # ctrl backspace
+bindkey "^[[P" delete-char # backspace
+bindkey "^[[M" kill-word # ctrl backspace
+
+bindkey "^[[A" up-line-or-history  #arrows up down
+bindkey "^[[B" down-line-or-history
+bindkey "^[[C" forward-char # arrows left right
+bindkey "^[[D" backward-char
+bindkey '^[[1;5D' beginning-of-line # ctrl arrows left rght
+bindkey '^[[1;5C' end-of-line
+
+bindkey "^A" backward-word # ctrl A S
+bindkey "^S" forward-word 
+bindkey -ar "^["  
+bindkey -M viins -r "^["  
+bindkey -M vicmd -r "^["  
+bindkey -M viopp -r "^["  
+bindkey -M main -r "^["  
+bindkey -M emacs -r "^X^O"  
+bindkey -M emacs -r "^X^V"  
+bindkey -M main  -r "^X^V"  
+
+source /home/l6b7/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/l6b7/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /home/l6b7/.config/zsh/plugins/zsh-fzf-history-search/zsh-fzf-history-search.zsh
+source /home/l6b7/.config/zsh/plugins/zsh-sudo/zsh-sudo.zsh
+source /home/l6b7/.config/zsh/plugins/zsh-globalalias/globalalias.zsh
+
+
+
+source $ALIASES

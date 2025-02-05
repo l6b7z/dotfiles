@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+#PATH
+source .config/zsh/path
+
+#ENV VARS
+source .config/zsh/env-vars
+
+#ZSHRC
+ln -sf $HOME/.config/zsh/zshrc $HOME/.config/zsh/.zshrc
+
+#ALIASES
+export ALIASES=$HOME/.config/zsh/aliases
+
+#EXEC GRAPHICAL SERVER
+source $HOME/.config/zsh/start_graphical_server

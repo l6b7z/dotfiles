@@ -1,0 +1,1 @@
+/home/l6b7/.config/nvim/lua/l6b7/plugins/colorscheme.lua

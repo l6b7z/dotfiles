@@ -1,0 +1,52 @@
+#!/bin/sh
+
+# Compositor 
+# picom &
+xcompmgr &
+
+# Wallpaper
+nitrogen --restore &
+
+# Keybindings
+xbindkeys -f ~/.config/x11/xbindkeysrc
+
+# Keyboard 
+xset r rate $(echo $ZK_SYS_KBD_FEEDBACK)
+setxkbmap $ZK_SYS_KBD_MAP
+
+#screensaver
+xset b off
+xset s off
+xset -dpms 
+
+# keyboard
+setxkbmap -option caps:hyper
+setxkbmap -option shift:both_capslock
+xcape -t 150 -e 'Super_L=Scroll_Lock' # swap scroll_lock with something more sensible (hold super for less than 200 ms and it will press scroll lock instead)
+xcape -t 150 -e 'Hyper_L=Escape'
+
+# Monitor
+zkmon_main
+
+# Hide mouse
+if [[ "$ZK_SYS_UNCLUTTER" -eq 1 ]]; then
+ unclutter --timeout 1 &
+fi
+
+# Screen Brightness
+xbacklight -set $ZK_SYS_BACKLIGHT
+
+# Clipboard
+clipmenud &
+
+# Notifications
+dunst &
+
+# kdeconnect
+/usr/bin/kdeconnectd &
+
+# start dwmblocks
+dwmblocks &
+
+# Execute DWM
+exec dwm

@@ -1,0 +1,51 @@
+#!/bin/zsh
+
+# new
+alias s="sudo"
+alias cmd="copy_last_command"
+
+alias piano="vmpk"
+alias fm="pcmanfm"
+alias lf="lfrun"
+
+alias wolf="librewolf"
+alias office="libreoffice"
+
+alias svim="sudoedit"
+
+alias duf="duf -hide special,fuse,loops,binds -output filesystem,mountpoint,size,used,usage"
+
+alias neofetch="fastfetch"
+
+alias clipboard_copy="xsel --clipboard"
+
+alias mnt="util-mount"
+alias umt="util-umount"
+alias umm="sudo umount -Rl /mnt"
+
+# package manager
+alias x="yay -S"
+alias xr="yay -Rns"
+alias xs="yay -Ss"
+alias xl="yay -Q"
+alias xu="yay -Syu"
+alias xsp="pacman -Ss"
+
+# quality of ife
+alias vim="nvim"
+alias lp="util_loop_cmd"
+
+# verbose
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -v"
+
+
+# Colorize commands when possible.
+alias ls="lsd --group-directories-first"
+alias l=" lsd -A -l --total-size --date +\"%d/%m %H:%M\" --group-directories-first --blocks date,size,name"
+alias ll="lsd -A -l --total-size --date +\"%d/%m/%Y %H:%M:%S\" --group-directories-first --blocks permission,user,group,date,size,name"
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias ccat="highlight --out-format=ansi"
+alias ip="ip -color=auto"

@@ -1,0 +1,56 @@
+#!/bin/zsh
+
+# System settings
+export EDITOR="nvim"
+export MANPAGER='nvim +Man!'
+export TERMINAL="st"
+export BROWSER="librewolf"
+export PHONE=""
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export KRITA_NO_STYLE_OVERRIDE=1
+
+export ZK_BASE_FONT_SIZE=26
+export ZK_SYS_BACKLIGHT=75
+export ZK_SYS_UNCLUTTER=1
+export ZK_SYS_KBD_MAP="gb" # pl
+export ZK_SYS_KBD_FEEDBACK="195 70" # delay repetition
+
+export ZK_DMENU_BAR_WIDTH=45 # percentage
+
+# Monitor
+export ZK_MON_WIDTH=1920
+export ZK_MON_HEIGHT=1080
+export ZK_MON_MAIN="eDP1"
+export ZK_MON_MAIN_REFRESH=60
+
+export ZK_MON_SEC="DP1"
+export ZK_MON_SEC_REFRESH=60
+export ZK_MON_SEC_RES="1920x1080"
+export ZK_MON_SEC_POS="below" # above / below
+export ZK_MON_DUP_SCALE="1" # 1
+# export ZK_MON_DUP_SCALE="1.333" # 1
+
+# Dmenu
+export ZK_DMENU_OPTS_DEFAULT=$(dmenu_pos)
+
+# Directories
+export ZK_DIR_MAIN="$HOME/main-dir"
+export ZK_DIR_STATIC="$HOME/.static"
+export ZK_DIR_CONFIG="$HOME/.config"
+export ZK_DIR_APP_LIST="$HOME/.static/dmenu_lists/main"
+
+export ZK_DIR_RESOURCES="$ZK_DIR_STATIC/resources"
+export ZK_DIR_BIN="$ZK_DIR_STATIC/scripts"
+export ZK_DIR_SRC="$ZK_DIR_STATIC/src"
+export ZK_DIR_SCREENSHOT="$HOME/main-dir/projects/captured/"
+export ZK_DIR_RECORDING="$HOME/main-dir/projects/captured/"
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+
+export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
+
+# Intellij fix
+export _JAVA_AWT_WM_NONREPARENTING=1
